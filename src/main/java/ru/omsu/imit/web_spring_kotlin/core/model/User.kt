@@ -23,4 +23,16 @@ open class User(_id: String, _username: String, _password: String) {
     private val password: String = _password
 
     constructor(_username: String, _password: String) : this(UUID.randomUUID().toString(), _username, _password)
+
+    fun getId(): String {
+        return id
+    }
+
+    fun getUsername(): String {
+        return username
+    }
+
+    fun getPassword(): String {
+        return password
+    }
 }
