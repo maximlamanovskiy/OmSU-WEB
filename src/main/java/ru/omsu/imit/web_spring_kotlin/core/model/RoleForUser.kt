@@ -7,28 +7,12 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "Role_For_User")
-class RoleForUser(_id: String, _userId: String, _roleId: String) {
-    @Id
-    private val id: String = _id
-
-    @Column(name = "user_id", nullable = false)
-    private val userId: String = _userId
-
-    @Column(name = "role_id", nullable = false)
-    private val roleId: String = _roleId
-
-    constructor(_userId: String, _roleId: String): this(UUID.randomUUID().toString(), _userId, _roleId)
-
-    fun getId(): String {
-        return id
-    }
-
-    fun getUserId(): String {
-        return userId
-    }
-
-    fun getRoleId(): String {
-        return roleId
-    }
+@Table(name = "ROLE_FOR_USER")
+open class RoleForUser constructor(
+        @Id open val id: String,
+        @Column(name = "user_id", nullable = false) open val userId: String,
+        @Column(name = "role_id", nullable = false) open val roleId: String
+) {
+    constructor(_userId: String, _roleId: String) : this(UUID.randomUUID().toString(), _userId, _roleId)
+    constructor(): this("", "", "")
 }

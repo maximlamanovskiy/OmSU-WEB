@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository
 import ru.omsu.imit.web_spring_kotlin.core.model.RoleForUser
 
 @Repository
-interface IRoleForUserRepository: CrudRepository<RoleForUser, String> {
-    fun findAllByUserId(userId: String): MutableIterable<RoleForUser>
+interface RoleForUserRepository: CrudRepository<RoleForUser, String> {
+    fun findRoleForUsersByUserId(userId: String): MutableIterable<RoleForUser>
 }

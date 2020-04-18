@@ -10,29 +10,11 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "USERS")
-open class User(_id: String, _username: String, _password: String) {
-
-    @Id
-    private val id: String = _id
-
-    @Column(name = "username", nullable = false)
-    private val username: String = _username
-
-    @JsonIgnore
-    @Column(name = "password", nullable = false)
-    private val password: String = _password
-
+open class User constructor(
+        @Id open val id: String,
+        @Column(name = "username", nullable = false) open val username: String,
+        @JsonIgnore @Column(name = "password", nullable = false) open val password: String
+) {
     constructor(_username: String, _password: String) : this(UUID.randomUUID().toString(), _username, _password)
-
-    fun getId(): String {
-        return id
-    }
-
-    fun getUsername(): String {
-        return username
-    }
-
-    fun getPassword(): String {
-        return password
-    }
+    constructor(): this("", "", "")
 }
