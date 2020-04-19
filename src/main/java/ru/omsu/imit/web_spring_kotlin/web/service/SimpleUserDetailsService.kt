@@ -1,12 +1,24 @@
 package ru.omsu.imit.web_spring_kotlin.web.service
 
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
+
+import ru.omsu.imit.web_spring_kotlin.core.model.Role
+import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
 
 @Service
-class SimpleUserDetailsService: UserDetailsService {
-    override fun loadUserByUsername(p0: String?): UserDetails {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+open class SimpleUserDetailsService
+@Autowired
+constructor(private val userRepository: UserRepository): UserDetailsService {
+
+    @Transactional
+    override fun loadUserByUsername(username: String?): UserDetails {
+        val user = userRepository.findUserByUsername(username!!)
+        return User(user.username, user.password, user.roles.map { role: Role -> SimpleGrantedAuthority(role.role) })
     }
 }

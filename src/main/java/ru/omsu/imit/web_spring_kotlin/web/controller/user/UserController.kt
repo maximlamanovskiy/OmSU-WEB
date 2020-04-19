@@ -1,4 +1,4 @@
-package ru.omsu.imit.web_spring_kotlin.web.controller
+package ru.omsu.imit.web_spring_kotlin.web.controller.user
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType

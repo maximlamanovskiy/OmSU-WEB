@@ -24,7 +24,7 @@ open class User constructor(
                 name = "ROLE_FOR_USER",
                 joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "id")],
                 inverseJoinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")])
-        val roles: List<Role> = mutableListOf()
+        open val roles: List<Role> = mutableListOf()
 ) {
     constructor(_username: String, _password: String) : this(UUID.randomUUID().toString(), _username, _password)
     constructor(): this("", "", "")
