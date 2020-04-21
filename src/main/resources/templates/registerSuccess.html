@@ -12,11 +12,9 @@
 <body>
 <th:block th:include="/_menu"></th:block>
 
-<div th:if="${flashUser != null}">
-    <h2>You have successfully registered!</h2>
-    <ul>
-        <li>User Name: <span th:utext="${flashUser.username}">..</span></li>
-    </ul>
+<div th:if="${newUser != null}">
+    <h1>You have successfully registered!</h1>
+    <h2>User Name: <span th:utext="${newUser.username}">..</span></h2>
 </div>
 
 </body>
