@@ -6,5 +6,8 @@
     | &nbsp;
     <a th:href="@{/users}">Admin</a>
     | &nbsp;
+    <a th:if="${#request.userPrincipal == null}" th:href="@{/register}">Registration</a>
+    | &nbsp;
+    <a th:if="${#request.userPrincipal == null}" th:href="@{/login}">Login</a>
     <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
 </div>

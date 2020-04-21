@@ -1,4 +1,4 @@
-package ru.omsu.imit.web_spring_kotlin.web.service
+package ru.omsu.imit.web_spring_kotlin.utils
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.ApplicationArguments

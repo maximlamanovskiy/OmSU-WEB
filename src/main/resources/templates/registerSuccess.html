@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Successfully registered</title>
+    <style>
+        span {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+<th:block th:include="/_menu"></th:block>
+
+<div th:if="${flashUser != null}">
+    <h2>You have successfully registered!</h2>
+    <ul>
+        <li>User Name: <span th:utext="${flashUser.username}">..</span></li>
+    </ul>
+</div>
+
+</body>
+</html>

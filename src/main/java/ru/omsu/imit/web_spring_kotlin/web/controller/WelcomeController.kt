@@ -1,4 +1,4 @@
-package ru.omsu.imit.web_spring_kotlin.web.controller.user
+package ru.omsu.imit.web_spring_kotlin.web.controller
 
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
