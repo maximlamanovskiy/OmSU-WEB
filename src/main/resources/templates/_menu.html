@@ -2,9 +2,9 @@
      style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
     <a th:href="@{/}">Home</a>
     | &nbsp;
-    <a th:href="@{/userInfo}">User Info</a>
+    <a th:href="@{/whoAmI}">User Info</a>
     | &nbsp;
-    <a th:href="@{/users}">Admin</a>
+    <a th:href="@{/users}">List of users</a>
     | &nbsp;
     <a th:if="${#request.userPrincipal == null}" th:href="@{/register}">Registration</a>
     | &nbsp;
