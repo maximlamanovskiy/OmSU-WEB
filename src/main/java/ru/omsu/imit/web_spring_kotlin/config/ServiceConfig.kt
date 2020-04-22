@@ -2,7 +2,9 @@ package ru.omsu.imit.web_spring_kotlin.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+
 import ru.omsu.imit.web_spring_kotlin.core.repository.RoleForUserRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.RoleRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository

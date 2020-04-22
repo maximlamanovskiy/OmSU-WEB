@@ -1,16 +1,17 @@
 package ru.omsu.imit.web_spring_kotlin.core.service.user
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
+
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
+import java.lang.Exception
 
 import ru.omsu.imit.web_spring_kotlin.core.model.Role
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
-import java.lang.Exception
 
 @Service
 open class SimpleUserDetailsService

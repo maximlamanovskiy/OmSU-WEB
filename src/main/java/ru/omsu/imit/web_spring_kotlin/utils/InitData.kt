@@ -1,13 +1,14 @@
 package ru.omsu.imit.web_spring_kotlin.utils
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
+
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
-import org.springframework.stereotype.Component
+
 import ru.omsu.imit.web_spring_kotlin.core.model.Role
 import ru.omsu.imit.web_spring_kotlin.core.model.RoleForUser
 import ru.omsu.imit.web_spring_kotlin.core.model.User
-
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.RoleRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.RoleForUserRepository

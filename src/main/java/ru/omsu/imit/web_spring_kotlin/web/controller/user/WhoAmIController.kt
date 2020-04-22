@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod
 @RequestMapping("/whoAmI")
 class WhoAmIController {
     @RequestMapping(method = [RequestMethod.GET], produces = [MediaType.TEXT_HTML_VALUE])
-    fun getUserInfo(model: Model) {
+    fun getUserInfo(model: Model): String {
 
+        return "userInfoPage"
     }
 }
