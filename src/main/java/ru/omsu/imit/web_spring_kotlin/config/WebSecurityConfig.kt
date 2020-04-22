@@ -33,7 +33,7 @@ constructor(
 
         http.authorizeRequests().antMatchers("/", "/login", "/logout").permitAll()
 
-        http.authorizeRequests().antMatchers("/userInfo").hasAnyAuthority("USER", "ADMIN")
+        http.authorizeRequests().antMatchers("/userInfo").hasAuthority("USER")
 
         http.authorizeRequests().antMatchers("/users").hasAuthority("ADMIN")
 

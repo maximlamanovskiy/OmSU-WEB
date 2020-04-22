@@ -4,20 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestMapping
+import javax.validation.Valid
 
 import org.springframework.http.MediaType
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMethod
 
 import ru.omsu.imit.web_spring_kotlin.web.model.user.RegistrationModel
-import ru.omsu.imit.web_spring_kotlin.web.service.user.SimpleUserService
-import javax.validation.Valid
+import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService
 
 @Controller
 @RequestMapping("/register")
 class RegisterController
 @Autowired
-constructor(private val userService: SimpleUserService) {
+constructor(private val userService: IUserService) {
     @RequestMapping(method = [RequestMethod.GET], produces = [MediaType.TEXT_HTML_VALUE])
     fun getRegisterPage(): String {
         return "registerPage"
