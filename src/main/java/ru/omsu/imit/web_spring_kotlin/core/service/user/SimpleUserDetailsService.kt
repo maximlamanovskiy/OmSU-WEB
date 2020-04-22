@@ -1,4 +1,4 @@
-package ru.omsu.imit.web_spring_kotlin.web.service.user
+package ru.omsu.imit.web_spring_kotlin.core.service.user
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.authority.SimpleGrantedAuthority
@@ -16,7 +16,6 @@ import java.lang.Exception
 open class SimpleUserDetailsService
 @Autowired
 constructor(private val userRepository: UserRepository): UserDetailsService {
-
     @Transactional
     override fun loadUserByUsername(username: String?): UserDetails {
         val user = userRepository.findUserByUsername(username!!) ?: throw Exception()

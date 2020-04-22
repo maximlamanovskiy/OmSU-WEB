@@ -10,6 +10,7 @@ import ru.omsu.imit.web_spring_kotlin.core.repository.RoleForUserRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.RoleRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
 import ru.omsu.imit.web_spring_kotlin.web.model.user.RegistrationModel
+import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService.UserConstants.USER_ROLE
 
 class SimpleUserService
 constructor(
@@ -33,7 +34,7 @@ constructor(
         newUser = User(userName, bCryptPasswordEncoder.encode(password))
         userRepository.save(newUser)
 
-        val role: Role = roleRepository.findRoleByRole(UserConstants.USER_ROLE)
+        val role: Role = roleRepository.findRoleByRole(USER_ROLE)
         roleForUserRepository.save(RoleForUser(newUser.id, role.id))
 
         return newUser
