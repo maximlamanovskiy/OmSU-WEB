@@ -14,7 +14,8 @@ import ru.omsu.imit.web_spring_kotlin.web.service.user.SimpleUserDetailsService
 @Configuration
 @EnableWebSecurity
 open class WebSecurityConfig
-@Autowired constructor(
+@Autowired
+constructor(
         private val userDetailsService: SimpleUserDetailsService
 ) : WebSecurityConfigurerAdapter() {
     @Bean
