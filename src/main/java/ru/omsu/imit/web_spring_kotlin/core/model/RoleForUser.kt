@@ -15,5 +15,5 @@ open class RoleForUser constructor(
         @Column(name = "role_id", nullable = false) open val roleId: String
 ) {
     constructor(_userId: String, _roleId: String) : this(UUID.randomUUID().toString(), _userId, _roleId)
-    constructor(): this("", "", "")
+    constructor() : this("", "", "")
 }

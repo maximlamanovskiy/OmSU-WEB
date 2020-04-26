@@ -28,5 +28,5 @@ open class User constructor(
         open val roles: List<Role> = mutableListOf()
 ) {
     constructor(_username: String, _password: String) : this(UUID.randomUUID().toString(), _username, _password)
-    constructor(): this("", "", "")
+    constructor() : this("", "", "")
 }

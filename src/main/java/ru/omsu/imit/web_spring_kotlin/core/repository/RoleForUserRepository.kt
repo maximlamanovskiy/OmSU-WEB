@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository
 import ru.omsu.imit.web_spring_kotlin.core.model.RoleForUser
 
 @Repository
-interface RoleForUserRepository: CrudRepository<RoleForUser, String> {
+interface RoleForUserRepository : CrudRepository<RoleForUser, String> {
     fun findRoleForUsersByUserId(userId: String): MutableIterable<RoleForUser>
 }

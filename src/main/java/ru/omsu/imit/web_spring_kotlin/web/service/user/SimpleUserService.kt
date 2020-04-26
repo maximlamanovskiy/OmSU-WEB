@@ -18,16 +18,16 @@ constructor(
         private val roleRepository: RoleRepository,
         private val roleForUserRepository: RoleForUserRepository,
         private val bCryptPasswordEncoder: BCryptPasswordEncoder
-): IUserService {
+) : IUserService {
     override fun createUser(registrationModel: RegistrationModel): User {
         val newUser: User
         val password: String = registrationModel.password
         val userName: String = registrationModel.username
 
-        if(userRepository.findUserByUsername(userName) != null) {
+        if (userRepository.findUserByUsername(userName) != null) {
             throw Exception()
         }
-        if(password != registrationModel.confirmPassword) {
+        if (password != registrationModel.confirmPassword) {
             throw Exception()
         }
 

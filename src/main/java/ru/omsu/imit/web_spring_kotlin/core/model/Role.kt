@@ -14,5 +14,5 @@ open class Role constructor(
         @Column(name = "role", nullable = false) open val role: String
 ) {
     constructor(_role: String) : this(UUID.randomUUID().toString(), _role)
-    constructor(): this("", "")
+    constructor() : this("", "")
 }

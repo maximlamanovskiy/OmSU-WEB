@@ -24,9 +24,12 @@
 
 <h2>Register</h2>
 
-<div th:if="${usernameError != null || passwordError != null || confirmPasswordError != null || error != null}" class="error">Unable to register new user</div>
+<div th:if="${usernameError != null || passwordError != null || confirmPasswordError != null || error != null}"
+     class="error">Unable to register new user
+</div>
 
-<form action="/signUp" method="POST" id="registrationModel" name="registrationModel" enctype="application/x-www-form-urlencoded">
+<form action="/signUp" method="POST" id="registrationModel" name="registrationModel"
+      enctype="application/x-www-form-urlencoded">
     <table>
         <tr>
             <td>Username</td>

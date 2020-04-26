@@ -16,7 +16,7 @@ import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
 @Service
 open class SimpleUserDetailsService
 @Autowired
-constructor(private val userRepository: UserRepository): UserDetailsService {
+constructor(private val userRepository: UserRepository) : UserDetailsService {
     @Transactional
     override fun loadUserByUsername(username: String?): UserDetails {
         val user = userRepository.findUserByUsername(username!!) ?: throw Exception()
