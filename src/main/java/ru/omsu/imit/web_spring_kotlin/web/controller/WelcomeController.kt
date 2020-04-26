@@ -7,13 +7,12 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMethod
 
 @Controller
-@RequestMapping("/", "/welcome")
+@RequestMapping("/")
 class WelcomeController {
-
     @RequestMapping(method = [RequestMethod.GET])
     fun getWelcomePage(model: Model): String {
         model.addAttribute("title", "Welcome")
         model.addAttribute("message", "This is welcome page!")
-        return "welcomePage"
+        return "WelcomePage"
     }
 }

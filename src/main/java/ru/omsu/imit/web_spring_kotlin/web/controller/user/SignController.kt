@@ -18,8 +18,8 @@ class SignController
 @Autowired
 constructor(private val userService: IUserService){
     @RequestMapping(value = ["/signIn"], method = [RequestMethod.GET], produces = [MediaType.TEXT_HTML_VALUE])
-    fun getLoginPage(model: Model): String {
-        return "signInPage"
+    fun getLoginPage(): String {
+        return "SignInPage"
     }
     @RequestMapping(value = ["/signUp"], method = [RequestMethod.GET], produces = [MediaType.TEXT_HTML_VALUE])
     fun getRegisterPage(): String {
@@ -30,5 +30,10 @@ constructor(private val userService: IUserService){
     fun registerUser(@Valid @ModelAttribute registrationModel: RegistrationModel, model: Model): String {
         model.addAttribute("newUser", userService.createUser(registrationModel))
         return "SignUpSuccessPage"
+    }
+
+    @RequestMapping(value = ["/signOutSuccess"], method = [RequestMethod.GET], produces = [MediaType.TEXT_HTML_VALUE])
+    fun getLogoutSuccessPage() : String {
+        return "LogoutSuccessPage"
     }
 }

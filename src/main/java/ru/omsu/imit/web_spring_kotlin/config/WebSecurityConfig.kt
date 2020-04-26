@@ -32,21 +32,20 @@ constructor(
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
 
-        http.authorizeRequests().antMatchers("/", "/login", "/logout").permitAll()
+        http.authorizeRequests().antMatchers("/", "/logout", "/whoAmI", "/signIn", "/signUp").permitAll()
 
-        http.authorizeRequests().antMatchers("/userInfo").hasAuthority("USER")
-
+        http.authorizeRequests().antMatchers("/whoAmI").hasAuthority("USER")
         http.authorizeRequests().antMatchers("/users").hasAuthority("ADMIN")
 
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403")
 
         http.authorizeRequests().and().formLogin()
                 .loginProcessingUrl("/j_spring_security_check")
-                .loginPage("/login")
-                .defaultSuccessUrl("/userAccountInfo")
-                .failureUrl("/login?error=true")
+                .loginPage("/signIn")
+                .defaultSuccessUrl("/whoAmI")
+                .failureUrl("/signIn?error=true")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful")
+                .and().logout().logoutUrl("/signOut").logoutSuccessUrl("/signOutSuccess")
     }
 }
