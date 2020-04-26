@@ -17,3 +17,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
     open-in-view: true
+  interceptor:
+    logger:
+      file: ./logs/adminAccess.log
