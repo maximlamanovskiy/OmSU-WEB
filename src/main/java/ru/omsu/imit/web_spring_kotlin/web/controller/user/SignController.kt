@@ -1,17 +1,22 @@
 package ru.omsu.imit.web_spring_kotlin.web.controller.user
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.validation.BindException
+import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestMapping
-import javax.validation.Valid
-
-import org.springframework.http.MediaType
-import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMethod
-
+import org.springframework.web.context.request.WebRequest
 import ru.omsu.imit.web_spring_kotlin.web.model.user.RegistrationModel
 import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService
+import java.util.*
+import javax.validation.Valid
+
 
 @Controller
 class SignController

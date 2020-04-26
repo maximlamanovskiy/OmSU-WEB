@@ -24,30 +24,30 @@
 
 <h2>Register</h2>
 
-<!--<div th:if="${errorMessage != null}" th:utext="${errorMessage}" class="error">...</div>-->
+<div th:if="${usernameError != null || passwordError != null || confirmPasswordError != null || error != null}" class="error">Unable to register new user</div>
 
 <form action="/signUp" method="POST" id="registrationModel" name="registrationModel" enctype="application/x-www-form-urlencoded">
     <table>
         <tr>
             <td>Username</td>
             <td><input type="text" name="username"/></td>
-<!--            <td>-->
-<!--                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">..</span>-->
-<!--            </td>-->
+            <td>
+                <span th:if="${usernameError != null}" th:utext="*{usernameError}">..</span>
+            </td>
         </tr>
         <tr>
             <td>Password</td>
             <td><input type="password" name="password"/></td>
-<!--            <td>-->
-<!--                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">..</span>-->
-<!--            </td>-->
+            <td>
+                <span th:if="${passwordError != null}" th:utext="*{passwordError}">..</span>
+            </td>
         </tr>
         <tr>
             <td>Confirm</td>
             <td><input type="password" name="confirmPassword"/></td>
-<!--            <td>-->
-<!--                <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">..</span>-->
-<!--            </td>-->
+            <td>
+                <span th:if="${confirmPasswordError != null}" th:utext="*{confirmPasswordError}">..</span>
+            </td>
         </tr>
         <tr>
             <td>&nbsp;</td>
