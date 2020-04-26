@@ -8,10 +8,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
-import java.lang.Exception
 
 import ru.omsu.imit.web_spring_kotlin.core.model.Role
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
+import ru.omsu.imit.web_spring_kotlin.core.service.user.exception.UserNotFoundException
 
 @Service
 open class SimpleUserDetailsService
@@ -19,7 +19,7 @@ open class SimpleUserDetailsService
 constructor(private val userRepository: UserRepository) : UserDetailsService {
     @Transactional
     override fun loadUserByUsername(username: String?): UserDetails {
-        val user = userRepository.findUserByUsername(username!!) ?: throw Exception()
+        val user = userRepository.findUserByUsername(username!!) ?: throw UserNotFoundException()
         return User(user.username, user.password, user.roles.map { role: Role -> SimpleGrantedAuthority(role.role) })
     }
 }
