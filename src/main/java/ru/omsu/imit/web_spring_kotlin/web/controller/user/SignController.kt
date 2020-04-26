@@ -10,7 +10,7 @@ import org.springframework.http.MediaType
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMethod
 
-import ru.omsu.imit.web_spring_kotlin.web.model.user.RegistrationModel
+import ru.omsu.imit.web_spring_kotlin.web.model.user.request.RegistrationModel
 import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService
 
 @Controller

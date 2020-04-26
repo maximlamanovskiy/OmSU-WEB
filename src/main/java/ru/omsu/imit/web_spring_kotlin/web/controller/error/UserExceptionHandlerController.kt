@@ -1,9 +1,11 @@
 package ru.omsu.imit.web_spring_kotlin.web.controller.error
 
+import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.ControllerAdvice
+
 import org.springframework.ui.Model
 import org.springframework.validation.BindException
-import org.springframework.web.bind.annotation.ControllerAdvice
-import org.springframework.web.bind.annotation.ExceptionHandler
+
 import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.PasswordsDoesNotMatchException
 import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.UserAlreadyExistsException
 

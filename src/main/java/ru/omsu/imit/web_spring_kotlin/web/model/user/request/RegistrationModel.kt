@@ -1,4 +1,4 @@
-package ru.omsu.imit.web_spring_kotlin.web.model.user
+package ru.omsu.imit.web_spring_kotlin.web.model.user.request
 
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size

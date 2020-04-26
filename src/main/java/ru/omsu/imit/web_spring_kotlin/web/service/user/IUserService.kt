@@ -1,7 +1,7 @@
 package ru.omsu.imit.web_spring_kotlin.web.service.user
 
 import ru.omsu.imit.web_spring_kotlin.core.model.User
-import ru.omsu.imit.web_spring_kotlin.web.model.user.RegistrationModel
+import ru.omsu.imit.web_spring_kotlin.web.model.user.request.RegistrationModel
 
 interface IUserService {
     companion object UserConstants {

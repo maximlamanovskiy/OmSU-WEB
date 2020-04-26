@@ -1,7 +1,6 @@
 package ru.omsu.imit.web_spring_kotlin.web.service.user
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import java.lang.Exception
 
 import ru.omsu.imit.web_spring_kotlin.core.model.Role
 import ru.omsu.imit.web_spring_kotlin.core.model.RoleForUser
@@ -9,7 +8,7 @@ import ru.omsu.imit.web_spring_kotlin.core.model.User
 import ru.omsu.imit.web_spring_kotlin.core.repository.RoleForUserRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.RoleRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
-import ru.omsu.imit.web_spring_kotlin.web.model.user.RegistrationModel
+import ru.omsu.imit.web_spring_kotlin.web.model.user.request.RegistrationModel
 import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService.UserConstants.USER_ROLE
 import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.PasswordsDoesNotMatchException
 import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.UserAlreadyExistsException
