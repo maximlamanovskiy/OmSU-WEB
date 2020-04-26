@@ -13,7 +13,6 @@ import java.util.UUID
 import javax.persistence.FetchType
 import javax.persistence.CascadeType
 
-
 @Entity
 @Table(name = "USERS")
 open class User constructor(
@@ -25,8 +24,9 @@ open class User constructor(
                 name = "ROLE_FOR_USER",
                 joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "id")],
                 inverseJoinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")])
-        open val roles: List<Role> = mutableListOf()
+        open val roles: Set<Role> = mutableSetOf()
 ) {
-    constructor(_username: String, _password: String) : this(UUID.randomUUID().toString(), _username, _password)
+    constructor(username: String, password: String) : this(UUID.randomUUID().toString(), username, password)
+    constructor(username: String, password: String, roles: Set<Role>) : this(UUID.randomUUID().toString(), username, password, roles)
     constructor() : this("", "", "")
 }

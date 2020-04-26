@@ -3,14 +3,17 @@ package ru.omsu.imit.web_spring_kotlin.web.controller.user
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.transaction.annotation.Transactional
+import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
+import javax.validation.Valid
 
 import org.springframework.http.MediaType
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMethod
 
 import ru.omsu.imit.web_spring_kotlin.web.model.user.response.Member
+import ru.omsu.imit.web_spring_kotlin.web.model.user.request.UpdateUserModel
 import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService
 
 @Controller
@@ -36,8 +39,10 @@ constructor(
         return "EditUser"
     }
 
+    @Transactional
     @RequestMapping(path = ["/{id}"], method = [RequestMethod.POST], produces = [MediaType.TEXT_HTML_VALUE])
-    fun updateUser(@PathVariable("id") userId: String): String {
+    open fun updateUser(@PathVariable("id") userId: String, @Valid @ModelAttribute updateUserModel: UpdateUserModel): String {
+        userService.updateUser(userId, updateUserModel)
         return "redirect:/users"
     }
 }

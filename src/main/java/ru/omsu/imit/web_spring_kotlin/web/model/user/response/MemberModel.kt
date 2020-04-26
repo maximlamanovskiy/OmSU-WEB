@@ -7,7 +7,7 @@ open class Member(open val id: String, open val username: String, open val roles
     constructor(user: User) : this(user.id, user.username, getRoles(user.roles))
 }
 
-private fun getRoles(roles: List<Role>) : String {
+private fun getRoles(roles: Collection<Role>) : String {
     var res = ""
     roles.forEach { role -> res = res.plus("${role.role},")}
     if (res.isNotBlank()) {
