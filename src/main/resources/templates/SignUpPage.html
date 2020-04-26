@@ -24,8 +24,12 @@
 
 <h2>Register</h2>
 
-<div th:if="${usernameError != null || passwordError != null || confirmPasswordError != null || error != null}"
-     class="error">Unable to register new user
+<div
+        th:if="${usernameError != null || passwordError != null || confirmPasswordError != null || rolesError != null || error != null}"
+        class="error"
+>
+    Unable to register new user
+    <span th:if="${error != null}" th:utext="*{error}">..</span>
 </div>
 
 <form action="/signUp" method="POST" id="registrationModel" name="registrationModel"

@@ -36,6 +36,7 @@ constructor(
     open fun getUser(@PathVariable("id") userId: String, model: Model): String {
         val member = Member(userService.getUserById(userId))
         model.addAttribute("member", member)
+        model.addAttribute("userId", member.id)
         return "EditUser"
     }
 

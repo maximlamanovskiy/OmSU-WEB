@@ -24,8 +24,10 @@
 <h2>Edit user</h2>
 <div
         th:if="${usernameError != null || passwordError != null || confirmPasswordError != null || rolesError != null || error != null}"
-        class="error">
+        class="error"
+>
     Unable to update user
+    <span th:if="${error != null}" th:utext="*{error}">..</span>
 </div>
 <form th:action="@{/users/{id}(id=${member.id})}" method="POST" id="updateUserModel" name="updateUserModel"
       enctype="application/x-www-form-urlencoded">
