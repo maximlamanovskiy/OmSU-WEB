@@ -11,6 +11,8 @@ import ru.omsu.imit.web_spring_kotlin.core.repository.RoleRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
 import ru.omsu.imit.web_spring_kotlin.web.model.user.RegistrationModel
 import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService.UserConstants.USER_ROLE
+import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.PasswordsDoesNotMatchException
+import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.UserAlreadyExistsException
 
 class SimpleUserService
 constructor(
@@ -25,10 +27,10 @@ constructor(
         val userName: String = registrationModel.username
 
         if (userRepository.findUserByUsername(userName) != null) {
-            throw Exception()
+            throw UserAlreadyExistsException("Unable to register user. User already exists.")
         }
         if (password != registrationModel.confirmPassword) {
-            throw Exception()
+            throw PasswordsDoesNotMatchException("Passwords doesn't match")
         }
 
         newUser = User(userName, bCryptPasswordEncoder.encode(password))
