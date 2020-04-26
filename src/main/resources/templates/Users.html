@@ -18,7 +18,9 @@
         <th>Roles</th>
     </tr>
     <tr th:each ="member : ${members}">
-        <td th:utext="${member.username}">...</td>
+        <td>
+            <a th:href="@{/users/{id}(id=${member.id})}" th:utext="${member.username}"></a>
+        </td>
         <td th:utext="${member.roles}">...</td>
     </tr>
 </table>

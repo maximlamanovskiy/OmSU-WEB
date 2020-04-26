@@ -9,9 +9,11 @@ import ru.omsu.imit.web_spring_kotlin.core.repository.RoleForUserRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.RoleRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
 import ru.omsu.imit.web_spring_kotlin.web.model.user.request.RegistrationModel
+import ru.omsu.imit.web_spring_kotlin.web.model.user.request.UpdateUserModel
 import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService.UserConstants.USER_ROLE
 import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.PasswordsDoesNotMatchException
 import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.UserAlreadyExistsException
+import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.UserNotFoundException
 
 class SimpleUserService
 constructor(
@@ -46,6 +48,13 @@ constructor(
     }
 
     override fun getUserById(userId: String): User {
-        return userRepository.findById(userId).orElseThrow { Exception() }
+        return userRepository.findById(userId).orElseThrow { throw UserNotFoundException("Unable to find user") }
+    }
+
+    override fun updateUser(userId: String, updateUserModel: UpdateUserModel): User {
+        val oldUser: User = userRepository.findById(userId).orElseThrow { throw UserNotFoundException("Unable to find user") }
+        val newUser: User = User()
+
+        return newUser
     }
 }

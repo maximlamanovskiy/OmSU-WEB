@@ -35,7 +35,7 @@ constructor(
         http.authorizeRequests().antMatchers("/", "/logout", "/whoAmI", "/signIn", "/signUp").permitAll()
 
         http.authorizeRequests().antMatchers("/whoAmI").hasAuthority("USER")
-        http.authorizeRequests().antMatchers("/users").hasAuthority("ADMIN")
+        http.authorizeRequests().antMatchers("/users/**").hasAuthority("ADMIN")
 
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403")
 

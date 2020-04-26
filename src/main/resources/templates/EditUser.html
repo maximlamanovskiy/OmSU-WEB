@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration</title>
+    <style>
+        th, td {
+            padding: 5px;
+        }
+
+        td span {
+            font-size: 90%;
+            font-style: italic;
+            color: red;
+        }
+
+        .error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<th:block th:include="/_menu"></th:block>
+<h2>Edit user</h2>
+<div
+        th:if="${usernameError != null || passwordError != null || confirmPasswordError != null || rolesError != null || error != null}"
+        class="error">
+    Unable to update user
+</div>
+<form th:action="@{/users/{id}(id=${member.id})}" method="POST" id="updateUserModel" name="updateUserModel"
+      enctype="application/x-www-form-urlencoded">
+    <table>
+        <tr>
+            <td>Username</td>
+            <td><input type="text" name="username" th:value="${member.username}"/></td>
+            <td>
+                <span th:if="${usernameError != null}" th:utext="*{usernameError}">..</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password"/></td>
+            <td>
+                <span th:if="${passwordError != null}" th:utext="*{passwordError}">..</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Confirm</td>
+            <td><input type="password" name="confirmPassword"/></td>
+            <td>
+                <span th:if="${confirmPasswordError != null}" th:utext="*{confirmPasswordError}">..</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Roles</td>
+            <td><input type="text" name="roles" th:value="${member.roles}"/></td>
+            <td>
+                <span th:if="${rolesError != null}" th:utext="*{rolesError}">..</span>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <input type="submit" value="Update"/>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
