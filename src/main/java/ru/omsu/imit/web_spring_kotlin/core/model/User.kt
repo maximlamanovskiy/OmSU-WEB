@@ -16,7 +16,7 @@ import javax.persistence.OneToMany
 
 @Entity
 @Table(name = "USERS")
-open class User constructor(
+open class User(
         @Id open val id: String,
         @Column(name = "username", nullable = false) open val username: String,
         @JsonIgnore @Column(name = "password", nullable = false) open val password: String,

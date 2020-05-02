@@ -11,9 +11,8 @@ import org.springframework.http.server.ServerHttpRequest
 import org.springframework.http.server.ServerHttpResponse
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice
 import java.lang.Exception
-import javax.servlet.http.HttpServletRequest
 
-import ru.omsu.imit.web_spring_kotlin.web.model.response.FinalResponse
+import ru.omsu.imit.web_spring_kotlin.web.model.base.FinalResponse
 
 
 @ControllerAdvice("ru.omsu.imit.web_spring_kotlin.web.controller.user.v2")

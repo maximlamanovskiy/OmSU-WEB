@@ -16,8 +16,7 @@ import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.RoleNotFoundExc
 import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.InvalidUpdateUserRequestException
 import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.PasswordsDoesNotMatchException
 
-class SimpleUserService
-constructor(
+class SimpleUserService(
         private val userRepository: UserRepository,
         private val roleRepository: RoleRepository,
         private val bCryptPasswordEncoder: BCryptPasswordEncoder

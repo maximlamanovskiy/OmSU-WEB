@@ -8,8 +8,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import ru.omsu.imit.web_spring_kotlin.web.controller.interceptor.AdminActionsInterceptor
 
 @Configuration
-open class WebMvcConfig
-constructor(@Value("\${spring.interceptor.logger.file}") private val file: String) : WebMvcConfigurer {
+open class WebMvcConfig(
+        @Value("\${spring.interceptor.logger.file}") private val file: String
+) : WebMvcConfigurer {
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(AdminActionsInterceptor(file)).addPathPatterns("/users/**")
     }

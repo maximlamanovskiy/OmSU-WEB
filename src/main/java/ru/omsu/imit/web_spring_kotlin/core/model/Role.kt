@@ -12,7 +12,7 @@ import java.util.UUID
 
 @Entity
 @Table(name = "ROLE")
-open class Role constructor(
+open class Role(
         @Id open val id: String,
         @Column(name = "role", nullable = false) open val role: String,
         @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY, cascade = [CascadeType.ALL]) open val users: Set<User> = mutableSetOf()

@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn
 
 @Entity
 @Table(name = "MESSAGES")
-open class Message constructor(
+open class Message(
         @Id open val id: String,
         @Column(name = "message", nullable = false) open val message: String,
         @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
