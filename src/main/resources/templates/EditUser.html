@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Registration</title>
+    <title>Update user</title>
     <style>
         th, td {
             padding: 5px;
@@ -59,7 +59,7 @@
                 <table>
                     <tr th:each ="role : ${roles}">
                         <td th:utext="${role.role}">...</td>
-                        <td th:utext="${role.roles}">...</td>
+                        <td><input type="checkbox" th:name="${role.role}" th:checked="${member.roles.contains(role.role)}"/></td>
                     </tr>
                 </table>
             </td>

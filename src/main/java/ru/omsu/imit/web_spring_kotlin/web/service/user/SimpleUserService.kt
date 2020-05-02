@@ -8,11 +8,13 @@ import ru.omsu.imit.web_spring_kotlin.core.repository.RoleRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
 import ru.omsu.imit.web_spring_kotlin.web.model.user.request.RegistrationModel
 import ru.omsu.imit.web_spring_kotlin.web.model.user.request.UpdateUserModel
+import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService.UserConstants.ADMIN_ROLE
 import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService.UserConstants.USER_ROLE
-import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.PasswordsDoesNotMatchException
-import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.RoleNotFoundException
-import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.UserAlreadyExistsException
 import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.UserNotFoundException
+import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.UserAlreadyExistsException
+import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.RoleNotFoundException
+import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.InvalidUpdateUserRequestException
+import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.PasswordsDoesNotMatchException
 
 class SimpleUserService
 constructor(
@@ -50,7 +52,11 @@ constructor(
     override fun updateUser(userId: String, updateUserModel: UpdateUserModel): User {
         val newUsername = updateUserModel.username
         val newPassword = updateUserModel.password
-        val newRoles = updateUserModel.roles
+        val admin = updateUserModel.ADMIN
+        val user = updateUserModel.USER
+        if (!user && !admin) {
+            throw InvalidUpdateUserRequestException("User should have at least one role")
+        }
 
         val oldUser: User = userRepository.findById(userId).orElseThrow { throw UserNotFoundException("Unable to find user") }
         var password = oldUser.password
@@ -66,11 +72,17 @@ constructor(
             password = bCryptPasswordEncoder.encode(newPassword)
         }
 
-        val userRoles = newRoles.split(",").map { role -> roleRepository.findRoleByRole(role).orElseThrow { throw RoleNotFoundException("Unable to find role") } }
+        val userRoles = ArrayList<Role>(2)
+        if (user) userRoles
+                .add(roleRepository.findRoleByRole(USER_ROLE)
+                        .orElseThrow { throw UserNotFoundException("Unable to find user") })
+        if (admin) userRoles
+                .add(roleRepository.findRoleByRole(ADMIN_ROLE)
+                        .orElseThrow { throw UserNotFoundException("Unable to find user") })
         val roles = oldUser.roles.intersect(userRoles).plus(userRoles)
 
         val newUser = User(userId, newUsername, password, roles)
         userRepository.save(newUser)
-        return newUser
+        return oldUser
     }
 }

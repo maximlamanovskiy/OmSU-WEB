@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod
 
 import ru.omsu.imit.web_spring_kotlin.web.model.user.response.Member
 import ru.omsu.imit.web_spring_kotlin.web.model.user.request.UpdateUserModel
+import ru.omsu.imit.web_spring_kotlin.web.model.user.response.RoleResponse
+import ru.omsu.imit.web_spring_kotlin.web.service.role.IRoleService
 import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService
 
 @Controller
@@ -21,7 +23,8 @@ import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService
 open class UserController
 @Autowired
 constructor(
-        private val userService: IUserService
+        private val userService: IUserService,
+        private val roleService: IRoleService
 ) {
     @Transactional
     @RequestMapping(method = [RequestMethod.GET], produces = [MediaType.TEXT_HTML_VALUE])
@@ -37,6 +40,7 @@ constructor(
         val member = Member(userService.getUserById(userId))
         model.addAttribute("member", member)
         model.addAttribute("userId", member.id)
+        model.addAttribute("roles", roleService.getAllRole().map { role -> RoleResponse(role) })
         return "EditUser"
     }
 

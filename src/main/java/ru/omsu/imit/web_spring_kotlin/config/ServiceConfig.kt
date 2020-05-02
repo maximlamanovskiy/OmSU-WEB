@@ -7,6 +7,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 import ru.omsu.imit.web_spring_kotlin.core.repository.RoleRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
+import ru.omsu.imit.web_spring_kotlin.web.service.role.IRoleService
+import ru.omsu.imit.web_spring_kotlin.web.service.role.SimpleRoleService
 import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService
 import ru.omsu.imit.web_spring_kotlin.web.service.user.SimpleUserService
 
@@ -19,5 +21,12 @@ open class ServiceConfig {
             bCryptPasswordEncoder: BCryptPasswordEncoder
     ): IUserService {
         return SimpleUserService(userRepository, roleRepository, bCryptPasswordEncoder)
+    }
+
+    @Bean
+    open fun configureRoleService(
+            repository: RoleRepository
+    ) : IRoleService {
+        return SimpleRoleService(repository)
     }
 }

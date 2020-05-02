@@ -1,6 +1,5 @@
 package ru.omsu.imit.web_spring_kotlin.web.model.user.request
 
-import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
@@ -10,7 +9,6 @@ open class UpdateUserModel(
         open val username: String,
         open val password: String?,
         open val confirmPassword: String?,
-        @get:NotNull(message = "Roles must be not null")
-        @get:NotBlank(message = "Roles must be not blank")
-        open val roles: String
+        open val ADMIN: Boolean = false,
+        open val USER: Boolean = false
 )
