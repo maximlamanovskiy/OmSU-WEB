@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Chat</title></head>
+
+<style>
+    table th, table td {
+        padding: 5px;
+    }
+</style>
+
+<body>
+<th:block th:include="/_menu"></th:block>
+
+<h2>Chat Messages</h2>
+<table>
+    <tr>
+        <th>User</th>
+        <th>:</th>
+        <th>Message</th>
+    </tr>
+    <tr th:each ="message : ${messages}">
+        <td th:utext="${message.owner}"></td>
+        <td>:</td>
+        <td th:utext="${message.message}"></td>
+    </tr>
+</table>
+<form name='say-in-chat' th:action="@{/chat}" method='POST'>
+    <table>
+        <tr>
+            <td><input type='text' name='message'></td>
+        </tr>
+        <tr>
+            <td><input name="submit" type="submit" value="Say"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

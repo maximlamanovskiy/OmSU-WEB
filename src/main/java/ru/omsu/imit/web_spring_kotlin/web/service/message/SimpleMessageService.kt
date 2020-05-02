@@ -1,7 +1,5 @@
 package ru.omsu.imit.web_spring_kotlin.web.service.message
 
-import java.security.Principal
-
 import ru.omsu.imit.web_spring_kotlin.core.model.Message
 import ru.omsu.imit.web_spring_kotlin.core.repository.MessageRepository
 import ru.omsu.imit.web_spring_kotlin.core.repository.UserRepository
@@ -12,8 +10,8 @@ class SimpleMessageService(
         private val messageRepository: MessageRepository,
         private val userRepository: UserRepository
 ) : IMessageService {
-    override fun createMessage(createMessageRequest: CreateMessageRequest, principal: Principal): Message {
-        val user = userRepository.findUserByUsername(principal.name) ?: throw UserNotFoundException("Unable to find user")
+    override fun createMessage(createMessageRequest: CreateMessageRequest, username: String): Message {
+        val user = userRepository.findUserByUsername(username) ?: throw UserNotFoundException("Unable to find user")
         return messageRepository.save(Message(createMessageRequest.message, user))
     }
 

@@ -31,7 +31,7 @@ constructor(
     open fun getAllUsers(model: Model): String {
         val members: List<Member> = userService.getAllUsers().map { user -> Member(user) }
         model.addAttribute("members", members)
-        return "Users"
+        return "UsersPage"
     }
 
     @Transactional
@@ -41,7 +41,7 @@ constructor(
         model.addAttribute("member", member)
         model.addAttribute("userId", member.id)
         model.addAttribute("roles", roleService.getAllRole().map { role -> RoleResponse(role) })
-        return "EditUser"
+        return "EditUserPage"
     }
 
     @Transactional
