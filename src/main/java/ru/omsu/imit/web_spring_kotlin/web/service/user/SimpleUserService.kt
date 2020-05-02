@@ -57,6 +57,7 @@ class SimpleUserService(
             throw InvalidUpdateUserRequestException("User should have at least one role")
         }
 
+        println(newPassword.isNotBlank())
         val oldUser: User = userRepository.findById(userId).orElseThrow { throw UserNotFoundException("Unable to find user") }
         var password = oldUser.password
 
@@ -67,7 +68,7 @@ class SimpleUserService(
             throw PasswordsDoesNotMatchException("Passwords doesn't match")
         }
 
-        if (newPassword != null) {
+        if (newPassword.isNotBlank()) {
             password = bCryptPasswordEncoder.encode(newPassword)
         }
 
@@ -80,6 +81,7 @@ class SimpleUserService(
                         .orElseThrow { throw UserNotFoundException("Unable to find user") })
         val roles = oldUser.roles.intersect(userRoles).plus(userRoles)
 
+        println(password)
         val newUser = User(userId, newUsername, password, roles)
         userRepository.save(newUser)
         return oldUser
