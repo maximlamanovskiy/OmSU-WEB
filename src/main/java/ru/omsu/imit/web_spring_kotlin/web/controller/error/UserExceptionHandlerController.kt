@@ -15,7 +15,7 @@ import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.UserAlreadyExis
 import ru.omsu.imit.web_spring_kotlin.web.service.user.exception.UserNotFoundException
 import ru.omsu.imit.web_spring_kotlin.web.service.user.IUserService
 
-@ControllerAdvice("ru.omsu.imit.web_spring_kotlin.web.controller.user")
+@ControllerAdvice("ru.omsu.imit.web_spring_kotlin.web.controller.user.v1")
 open class UserExceptionHandlerController
 @Autowired
 constructor(

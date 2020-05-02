@@ -55,7 +55,14 @@
         </tr>
         <tr>
             <td>Roles</td>
-            <td><input type="text" name="roles" th:value="${member.roles}"/></td>
+            <td>
+                <table>
+                    <tr th:each ="role : ${roles}">
+                        <td th:utext="${role.role}">...</td>
+                        <td th:utext="${role.roles}">...</td>
+                    </tr>
+                </table>
+            </td>
             <td>
                 <span th:if="${rolesError != null}" th:utext="*{rolesError}">..</span>
             </td>

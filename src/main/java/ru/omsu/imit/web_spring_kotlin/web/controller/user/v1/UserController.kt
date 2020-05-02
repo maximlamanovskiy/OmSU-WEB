@@ -1,4 +1,4 @@
-package ru.omsu.imit.web_spring_kotlin.web.controller.user
+package ru.omsu.imit.web_spring_kotlin.web.controller.user.v1
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
