@@ -32,7 +32,7 @@ constructor(
         if (req.requestURI.startsWith("/users")) {
             model.addAttribute("member", Member(userService.getUserById(req.requestURI.split("/")[2])))
             model.addAttribute("roles", roleService.getAllRole().map { role -> RoleResponse(role) })
-            res = "EditUser"
+            res = "EditUserPage"
         }
         return res
     }
@@ -44,7 +44,7 @@ constructor(
         if (req.requestURI.startsWith("/users")) {
             model.addAttribute("member", Member(userService.getUserById(req.requestURI.split("/")[2])))
             model.addAttribute("roles", roleService.getAllRole().map { role -> RoleResponse(role) })
-            res = "EditUser"
+            res = "EditUserPage"
         }
         return res
     }
@@ -57,7 +57,7 @@ constructor(
         if (req.requestURI.startsWith("/users")) {
             model.addAttribute("member", Member(userService.getUserById(req.requestURI.split("/")[2])))
             model.addAttribute("roles", roleService.getAllRole().map { role -> RoleResponse(role) })
-            res = "EditUser"
+            res = "EditUserPage"
         }
         return res
     }
@@ -69,7 +69,7 @@ constructor(
         if (req.requestURI.startsWith("/users")) {
             model.addAttribute("member", Member(userService.getUserById(req.requestURI.split("/")[2])))
             model.addAttribute("roles", roleService.getAllRole().map { role -> RoleResponse(role) })
-            res = "EditUser"
+            res = "EditUserPage"
         }
         return res
     }
@@ -81,7 +81,7 @@ constructor(
         if (req.requestURI.startsWith("/users")) {
             model.addAttribute("member", Member(userService.getUserById(req.requestURI.split("/")[2])))
             model.addAttribute("roles", roleService.getAllRole().map { role -> RoleResponse(role) })
-            res = "EditUser"
+            res = "EditUserPage"
         }
         return res
     }
@@ -92,7 +92,7 @@ constructor(
         var res = "SignUpPage"
         if (req.requestURI.startsWith("/users")) {
             model.addAttribute("roles", roleService.getAllRole().map { role -> RoleResponse(role) })
-            res = "EditUser"
+            res = "EditUserPage"
         }
         return res
     }
